@@ -32,7 +32,7 @@ public class NumToLetters {
      * Method to numToLetters
      */
     public static void numToLetters(){
-        //提示输入按键数字1-9
+        //Prompt for key numbers 1-9
         System.out.println("Please input nums from 0 to 9:");
         String nums="";
         Scanner input = new Scanner(System.in);

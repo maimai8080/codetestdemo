@@ -6,7 +6,7 @@ import org.junit.Test;
 
 
 /**
- * 测试方法
+ * The test method
  *
  * @Auther: MCH
  * @Date: 2020/12/10/11:39
@@ -18,7 +18,7 @@ public class TestCode {
         NumToLetters.numToLetters();
 
     }
-    //测试方法，由于Junit不支持控制台手动输入，使用main方法测试
+    //Test the method, using the main method since Junit does not support console manual input
     public static void main(String[] args) {
         NumToLetters.numToLetters();
     }
