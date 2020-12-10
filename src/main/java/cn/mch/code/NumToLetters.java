@@ -3,14 +3,14 @@ package cn.mch.code;
 import java.util.*;
 
 /**
- * 数字转换成字母
+ * NumToLetters
  *
  * @Auther: MCH
  * @Date: 2020/12/10/10:47
  */
 public class NumToLetters {
     /**
-     * 初始化数据的方法
+     * Method to initialize data
      */
     public static Map<String, List<String>> initNumMap(){
         Map<String, List<String>>numMap=new HashMap<>();
@@ -29,7 +29,7 @@ public class NumToLetters {
 }
 
     /**
-     * 数字转换成字母
+     * Method to numToLetters
      */
     public static void numToLetters(){
         //提示输入按键数字1-9
@@ -39,7 +39,7 @@ public class NumToLetters {
         while(true){
             nums=input.next();
             if(!nums.matches("[0-9]{1,2}")){
-                System.out.println("输入不合法！只能输入0-99的数字,请重新输入：");
+                System.out.println("Only 0-99 digits can be entered. Please re-enter:");
             }else{
                 break;
             }
@@ -53,20 +53,20 @@ public class NumToLetters {
             if(i<arrStr.length-1){
                 arrInput.append(",");
             }
-            //先将多个list中的数据都添加到同一个集合中作为数据源
+            //adding data from  Lists to the same Map as the data source
             List<String> lettersList=initNumMap().get(arrStr[i]);
-            if(lettersList.size()>0){//没有数据的集合不能强行转换为数组
+            if(lettersList.size()>0){// Map cannot be forcibly converted to an array  without data
                 String[] letterArr= (String[]) lettersList.toArray();
                 dataList.add(letterArr);
             }
         }
         arrInput.append("}");
-        //递归实现多数组排列组合，并返回最终的排列集合
+        //Recursively can implement permutations of lists and returns the final permutation Map
         List<String[]> resultList= makeupLetters(dataList,0,null);
-        //打印输入内容
+        //Print the input
         System.out.println(arrInput.toString());
         System.out.print("Output:");
-        //打印输出排列组合结果
+        //Print and output permutation and combination results
         for(int i=0;i<resultList.size();i++){
             String[] letterArr=resultList.get(i);
             System.out.print(" ");
@@ -82,7 +82,7 @@ public class NumToLetters {
         }
 
         List<String[]> resultList0=new ArrayList<String[]>();
-        if(index==0){//第一列数组默认有多少个字母就添加多少个排列数据
+        if(index==0){//The default of the first column array is to add as many permutations as the number of letters
             String[] dataArr=dataList.get(0);
             for(String s : dataArr){
                 resultList0.add(new String[]{s});
@@ -91,11 +91,11 @@ public class NumToLetters {
             String[] dataArr=dataList.get(index);
             for(String[] dataArr0: resultList){
                 for(String s : dataArr){
-                    //复制数组并扩充新元素
+                    //Copy the array and extend the new element
                     String[] dataArrCopy=new String[dataArr0.length+1];
                     System.arraycopy(dataArr0, 0, dataArrCopy, 0, dataArr0.length);
                     dataArrCopy[dataArrCopy.length-1]=s;
-                    //追加到结果集
+                    //Add to the result set
                     resultList0.add(dataArrCopy);
                 }
             }
